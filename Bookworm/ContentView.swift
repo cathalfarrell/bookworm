@@ -18,6 +18,10 @@ struct ContentView: View {
 
     @State private var showingAddScreen = false
 
+    /*
+     Challenge 2 - Modify ContentView so that books rated as 1 star have their name shown in red.
+     */
+
     var body: some View {
         NavigationView {
             List {
@@ -29,6 +33,7 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(book.title ?? "Unknown Title")
                                 .font(.headline)
+                                .foregroundColor(book.rating > 1 ? .black : .red)
                             Text(book.author ?? "Unknown Author")
                                 .foregroundColor(.secondary)
                         }
