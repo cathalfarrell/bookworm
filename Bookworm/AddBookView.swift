@@ -19,7 +19,21 @@ struct AddBookView: View {
     @State private var genre = ""
     @State private var review = ""
 
+    var validData: Bool {
+        if title.trimmingCharacters(in: .whitespaces).isEmpty ||
+        author.trimmingCharacters(in: .whitespaces).isEmpty ||
+        genre.trimmingCharacters(in: .whitespaces).isEmpty ||
+            review.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        }
+        return true
+    }
+
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
+
+    /*
+     Challenge 1 - Right now it’s possible to select no genre for books, which causes a problem for the detail view. Please fix this, either by forcing a default, validating the form, or showing a default picture for unknown genres – you can choose.
+     */
 
     var body: some View {
         NavigationView {
@@ -57,7 +71,9 @@ struct AddBookView: View {
 
                         self.presentationMode.wrappedValue.dismiss()
                     }
+                    .disabled(validData == false)
                 }
+
             }
             .navigationBarTitle("Add Book")
         }
