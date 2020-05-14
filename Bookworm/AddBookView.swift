@@ -67,6 +67,8 @@ struct AddBookView: View {
                         newBook.genre = self.genre
                         newBook.review = self.review
 
+                        newBook.date = Date() //now
+
                         try? self.moc.save()
 
                         self.presentationMode.wrappedValue.dismiss()

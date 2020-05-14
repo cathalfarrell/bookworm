@@ -17,6 +17,21 @@ struct DetailView: View {
 
     let book: Book
 
+    var formattedLaunchDate: String {
+        if let bookDate = book.date {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            return formatter.string(from: bookDate)
+        } else {
+            return "N/A"
+        }
+
+    }
+
+    /*
+     Challenge 3 - Add a new “date” attribute to the Book entity, assigning Date() to it so it gets the current date and time, then format that nicely somewhere in DetailView.
+     */
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -42,6 +57,12 @@ struct DetailView: View {
 
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
+
+                Spacer()
+
+                Text(self.formattedLaunchDate)
+                .font(.caption)
+                .foregroundColor(.secondary)
 
                 Spacer()
             }
