@@ -103,8 +103,13 @@ struct DetailView_Previews: PreviewProvider {
         book.rating = 4
         book.review = "This was a great book; I really enjoyed it."
 
-        return NavigationView {
+        return Group {
             DetailView(book: book)
+                .preferredColorScheme(.dark)
+
+            DetailView(book: book)
+                .preferredColorScheme(.light)
         }
+
     }
 }

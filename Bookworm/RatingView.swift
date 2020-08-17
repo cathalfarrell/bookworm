@@ -58,6 +58,14 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView(rating: .constant(5))
+        Group {
+            RatingView(rating: .constant(5))
+                .preferredColorScheme(.dark)
+                .previewLayout(.sizeThatFits)
+
+            RatingView(rating: .constant(4))
+                .preferredColorScheme(.light)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }

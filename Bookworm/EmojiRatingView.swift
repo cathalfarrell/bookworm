@@ -30,5 +30,6 @@ struct EmojiRatingView: View {
 struct EmojiRatingView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiRatingView(rating: 4)
+            .previewLayout(.sizeThatFits)
     }
 }
